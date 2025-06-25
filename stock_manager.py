@@ -156,8 +156,8 @@ def checkout(args):
     else:
         try:
             total = cart_total(cart)
-        except ValueError as e:
-            print(f"checkout failed: {e}")
+        except ValueError as er:
+            print(f"checkout failed: {er}")
             return
         products = load_products()
         print("receipt:")
@@ -166,7 +166,7 @@ def checkout(args):
             price = item["price"]
             qty = item["quantity"]
             checkout_total = price * qty
-            print(f"{qty} x {name} @ {price} each = {checkout_total:.2f} KWD")
+            print(f"{qty} x {name} for {price} each = {checkout_total:.2f} KWD")
             products[product_id]["quantity"] -= qty
         print(f"Total: {total:.2f} KWD")
         save_products(products)
